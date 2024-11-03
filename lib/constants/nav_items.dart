@@ -1,7 +1,7 @@
 List<String> navItems = [
-  'Home',
-  'About',
-  'Services',
-  'Portfolio',
-  'Contact',
+  '건의사항',
+  '설문하기',
+  '통계자료',
+  '마음의편지',
+  '정보공유',
 ];
