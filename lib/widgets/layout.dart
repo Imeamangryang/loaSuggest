@@ -19,7 +19,8 @@ class _CustomLayoutState extends State<CustomLayout> {
     setState(() {
       _selectedIndex = index;
     });
-    Navigator.popAndPushNamed(context, '/${navItems[index]}'); // Adjusted route names
+    Navigator.popAndPushNamed(
+        context, '/${navItems[index]}'); // Adjusted route names
   }
 
   @override

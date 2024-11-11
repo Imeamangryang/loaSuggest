@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:loapetition/constants/colors.dart';
 import 'package:loapetition/widgets/item.dart';
 import 'package:loapetition/widgets/layout.dart';
 
@@ -34,7 +33,8 @@ class _HomePageState extends State<HomePage> {
                         ).createShader(bounds);
                       },
                       blendMode: BlendMode.dstIn,
-                      child: Image.asset('images/LOSTARK_wallpaper_3440x1440_Season3.jpg')),
+                      child: Image.asset(
+                          'images/LOSTARK_wallpaper_3440x1440_Season3.jpg')),
                   Center(
                     child: Wrap(
                       direction: Axis.horizontal,
@@ -46,7 +46,8 @@ class _HomePageState extends State<HomePage> {
                           child: SizedBox(
                             width: (width > 768 ? width / 2 : width),
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 75, horizontal: 20),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 75, horizontal: 20),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -92,7 +93,8 @@ class _HomePageState extends State<HomePage> {
             Container(
               color: Colors.white,
               child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 20),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 60, horizontal: 20),
                   child: Wrap(
                     direction: Axis.horizontal,
                     alignment: WrapAlignment.spaceEvenly,
@@ -105,7 +107,8 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Text(
                               'Aplicaciones mbviles',
-                              style: GoogleFonts.andika(fontSize: 30, fontWeight: FontWeight.bold),
+                              style: GoogleFonts.andika(
+                                  fontSize: 30, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               'Desarrollamos tu idea móvil tanto para Android como iOS y la construimos en aplicaciones móviles seguras, ligeras ademas de un diseño encantador.',
@@ -140,7 +143,8 @@ class _HomePageState extends State<HomePage> {
               color: Colors.white,
               child: Center(
                 child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 20),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 60, horizontal: 20),
                     child: Wrap(
                       crossAxisAlignment: WrapCrossAlignment.start,
                       runAlignment: WrapAlignment.spaceEvenly,
@@ -151,11 +155,12 @@ class _HomePageState extends State<HomePage> {
                           width: 300,
                           child: Column(
                             children: [
-                              const Icon(Icons.design_services, color: Colors.orange, size: 40),
+                              const Icon(Icons.design_services,
+                                  color: Colors.orange, size: 40),
                               Text(
                                 'Diseños',
-                                style:
-                                    GoogleFonts.andika(fontSize: 30, fontWeight: FontWeight.bold),
+                                style: GoogleFonts.andika(
+                                    fontSize: 30, fontWeight: FontWeight.bold),
                               ),
                               ListTile(
                                 leading: const Icon(
@@ -180,7 +185,8 @@ class _HomePageState extends State<HomePage> {
                                   Icons.check_circle,
                                   color: Colors.green,
                                 ),
-                                title: Text('Animaciones', style: GoogleFonts.andika(fontSize: 20)),
+                                title: Text('Animaciones',
+                                    style: GoogleFonts.andika(fontSize: 20)),
                               ),
                             ],
                           ),
@@ -196,32 +202,32 @@ class _HomePageState extends State<HomePage> {
                               ),
                               Text(
                                 'Performance',
-                                style:
-                                    GoogleFonts.andika(fontSize: 30, fontWeight: FontWeight.bold),
+                                style: GoogleFonts.andika(
+                                    fontSize: 30, fontWeight: FontWeight.bold),
                               ),
                               ListTile(
                                 leading: const Icon(
                                   Icons.check_circle,
                                   color: Colors.green,
                                 ),
-                                title:
-                                    Text('Notificaciones', style: GoogleFonts.andika(fontSize: 20)),
+                                title: Text('Notificaciones',
+                                    style: GoogleFonts.andika(fontSize: 20)),
                               ),
                               ListTile(
                                 leading: const Icon(
                                   Icons.check_circle,
                                   color: Colors.green,
                                 ),
-                                title:
-                                    Text('Automatización', style: GoogleFonts.andika(fontSize: 20)),
+                                title: Text('Automatización',
+                                    style: GoogleFonts.andika(fontSize: 20)),
                               ),
                               ListTile(
                                 leading: const Icon(
                                   Icons.check_circle,
                                   color: Colors.green,
                                 ),
-                                title:
-                                    Text('Escalabilidad', style: GoogleFonts.andika(fontSize: 20)),
+                                title: Text('Escalabilidad',
+                                    style: GoogleFonts.andika(fontSize: 20)),
                               ),
                             ],
                           ),
