@@ -38,6 +38,7 @@ dependencies:
   google_fonts: ^6.2.1
   get: ^4.6.6
   fl_chart: ^0.69.0
+  flutter_quill: ^10.8.5
 
 dev_dependencies:
   flutter_test:
