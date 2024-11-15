@@ -32,6 +32,10 @@ class _SuggestionPageState extends State<SuggestionPage> {
                 ),
               ),
             ),
+            // 상단 실선
+            SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: const Divider(color: Colors.black, thickness: 3.0)),
             // 건의사항 작성 버튼 오른쪽 상단에 위치
             Align(
               alignment: Alignment.topRight,

@@ -21,34 +21,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         // nav_items에 대한 라우트
-        TextButton(
-            onPressed: () {
-              Navigator.popAndPushNamed(context, '/${navItems[0]}');
-            },
-            child: Text('건의사항',
-                style: GoogleFonts.blackHanSans(
-                    fontSize: 20, color: CustomColor.whitePrimaryColor))),
-        TextButton(
-            onPressed: () {
-              Navigator.popAndPushNamed(context, '/${navItems[1]}');
-            },
-            child: Text('설문하기',
-                style: GoogleFonts.blackHanSans(
-                    fontSize: 20, color: CustomColor.whitePrimaryColor))),
-        TextButton(
-            onPressed: () {
-              Navigator.popAndPushNamed(context, '/${navItems[2]}');
-            },
-            child: Text('통계자료',
-                style: GoogleFonts.blackHanSans(
-                    fontSize: 20, color: CustomColor.whitePrimaryColor))),
-        TextButton(
-            onPressed: () {
-              Navigator.popAndPushNamed(context, '/${navItems[3]}');
-            },
-            child: Text('마음의편지',
-                style: GoogleFonts.blackHanSans(
-                    fontSize: 20, color: CustomColor.whitePrimaryColor))),
+        for (var item in navItems)
+          TextButton(
+              onPressed: () {
+                Navigator.popAndPushNamed(context, '/$item');
+              },
+              child: Text(item,
+                  style: GoogleFonts.blackHanSans(
+                      fontSize: 20, color: CustomColor.whitePrimaryColor))),
         TextButton(
             onPressed: () {
               Navigator.popAndPushNamed(context, '/');
