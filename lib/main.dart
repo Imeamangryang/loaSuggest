@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
             const SurveyPage(), // 설문하기페이지 surveypage.dart
         '/${navItems[2]}': (context) => const Servicios(), // 통계자료페이지
         '/${navItems[3]}': (context) =>
-            const AuthenticationPage(), // 로그인페이지 authpage.dart
+            AuthenticationPage(), // 로그인페이지 authpage.dart
         '/suggestion': (context) =>
             const SuggestionWritePage(), // 건의사항작성페이지 suggestionpage.dart
       },

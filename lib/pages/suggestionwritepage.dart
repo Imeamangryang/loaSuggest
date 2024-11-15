@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
-import 'package:loapetition/constants/nav_items.dart';
 import 'package:loapetition/widgets/layout.dart';
 
 class SuggestionWritePage extends StatefulWidget {
