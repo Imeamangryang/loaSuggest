@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:loapetition/constants/color_transform.dart';
 
 class Footer extends StatelessWidget {
-  const Footer({Key? key}) : super(key: key);
+  const Footer({super.key});
 
   @override
   Widget build(BuildContext context) {

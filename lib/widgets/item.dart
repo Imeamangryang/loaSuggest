@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ItemCard extends StatelessWidget {
+  const ItemCard({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         width: MediaQuery.of(context).size.width * 0.3,
         child: Card(
           color: Colors.white, // 배경색 설정
@@ -18,20 +20,20 @@ class ItemCard extends StatelessWidget {
               children: [
                 const Row(
                   children: [
-                    const CircleAvatar(
+                    CircleAvatar(
                       backgroundColor: Colors.red,
                       radius: 5,
                     ),
-                    const SizedBox(width: 8),
-                    const Text(
+                    SizedBox(width: 8),
+                    Text(
                       '건의 진행 중',
                       style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w900,
                       ),
                     ),
-                    const Spacer(),
-                    const Text(
+                    Spacer(),
+                    Text(
                       '건의일 : 2024-11-03',
                       style: TextStyle(
                         color: Colors.black,
@@ -62,8 +64,8 @@ class ItemCard extends StatelessWidget {
                       },
                       child: const Icon(Icons.thumb_up), // 엄지척 아이콘
                     ),
-                    Spacer(),
-                    Text('추천 수 : 1234',
+                    const Spacer(),
+                    const Text('추천 수 : 1234',
                         style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)), // 추천 수
                   ],
                 )

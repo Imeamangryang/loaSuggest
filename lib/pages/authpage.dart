@@ -8,9 +8,10 @@ var accessToken =
     'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IktYMk40TkRDSTJ5NTA5NWpjTWk5TllqY2lyZyIsImtpZCI6IktYMk40TkRDSTJ5NTA5NWpjTWk5TllqY2lyZyJ9.eyJpc3MiOiJodHRwczovL2x1ZHkuZ2FtZS5vbnN0b3ZlLmNvbSIsImF1ZCI6Imh0dHBzOi8vbHVkeS5nYW1lLm9uc3RvdmUuY29tL3Jlc291cmNlcyIsImNsaWVudF9pZCI6IjEwMDAwMDAwMDA1Njc2OTUifQ.HOzFbR2gG8RhNvobi3fds5hYBaEi1k55riqT_I609ZRjXAEKLwMK6VkinDXKxRtp4ZouDX54-viGDh32DVquQ6cC-kVPoB6IZstJ6dH5CqMbaJ8cv0TDBY4MR6lf__bN0xBRTyRodF5Ra07_9a_n0cMssEvpJSJ7ofMwAo_313dEHHXyyFw0xM8feYDKNcI574BDmLn_qvSs8pb6bddRSituFAFL-3onHWB5-BQSSezsH8eHOsHzcj5moHic6RgYanfn13FdpzIcdIkA-dn0cdYxK6iXVh5HJkVgowZDWGW8vFb3xiMWJGyl5_FUJCMwYKFjzUPVo9h750NEP9tz8Q';
 
 class AuthenticationPage extends StatefulWidget {
-  AuthenticationPage({super.key});
+  const AuthenticationPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _AuthenticationPageState createState() => _AuthenticationPageState();
 }
 
@@ -20,8 +21,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
   List<Map<String, dynamic>> _characters = [];
 
   Future<void> fetchCharacterInfo() async {
-    final apiUrl =
-        'https://developer-lostark.game.onstove.com/characters/${_characterName}/siblings';
+    final apiUrl = 'https://developer-lostark.game.onstove.com/characters/$_characterName/siblings';
     final headers = {
       "Content-Type": "application/json;charset-UTF-8",
       "Accept": "application/json",
@@ -31,11 +31,9 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
     try {
       final response = await http.get(Uri.parse(apiUrl), headers: headers);
       if (response.statusCode == 200) {
-        final data =
-            jsonDecode(response.body) as List<dynamic>; // Cast to List<dynamic>
+        final data = jsonDecode(response.body) as List<dynamic>; // Cast to List<dynamic>
         setState(() {
-          _characters = data.cast<
-              Map<String, dynamic>>(); // Convert to List<Map<String, dynamic>>
+          _characters = data.cast<Map<String, dynamic>>(); // Convert to List<Map<String, dynamic>>
           _data = 'response: ${response.body}';
         });
       } else {

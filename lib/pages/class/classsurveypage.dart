@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide Step;
 import 'package:loapetition/constants/nav_items.dart';
@@ -8,7 +10,7 @@ import 'package:survey_kit/survey_kit.dart';
 class SurveyPage extends StatefulWidget {
   final String className;
 
-  SurveyPage({required this.className});
+  const SurveyPage({super.key, required this.className});
 
   @override
   _SurveyPageState createState() => _SurveyPageState();
@@ -35,7 +37,7 @@ class _SurveyPageState extends State<SurveyPage> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: Text('Survey Result'),
+                          title: const Text('Survey Result'),
                           content: SingleChildScrollView(
                             child: ListBody(
                               children: <Widget>[
@@ -61,7 +63,7 @@ class _SurveyPageState extends State<SurveyPage> {
                           ),
                           actions: <Widget>[
                             TextButton(
-                              child: Text('OK'),
+                              child: const Text('OK'),
                               onPressed: () {
                                 Navigator.of(context).pop();
                                 Navigator.pushNamed(context, '/${navItems[0]}');

@@ -24,8 +24,7 @@ class _classmainPageState extends State<classmainPage> {
   List<Map<String, dynamic>> _characters = [];
 
   Future<void> fetchCharacterInfo() async {
-    final apiUrl =
-        'https://developer-lostark.game.onstove.com/characters/${_characterName}/siblings';
+    final apiUrl = 'https://developer-lostark.game.onstove.com/characters/$_characterName/siblings';
     final headers = {
       "Content-Type": "application/json;charset-UTF-8",
       "Accept": "application/json",

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loapetition/constants/nav_items.dart';
-import 'package:loapetition/pages/authpage.dart';
 import 'package:loapetition/pages/class/classmainpage.dart';
 import 'package:loapetition/pages/contents/contentsmainpage.dart';
-import 'package:loapetition/pages/dashboardpage.dart';
 import 'package:loapetition/pages/homepage.dart';
 import 'package:loapetition/pages/statistics/statisticsmainpage.dart';
 import 'package:loapetition/pages/update/updatemainpage.dart';

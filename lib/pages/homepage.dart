@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Container(
                 color: Colors.white,
-                child: Center(
+                child: const Center(
                   child: Wrap(
                     direction: Axis.horizontal, // 나열 방향
                     alignment: WrapAlignment.center, // 정렬 방식

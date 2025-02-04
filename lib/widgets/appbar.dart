@@ -4,7 +4,7 @@ import 'package:loapetition/constants/colors.dart';
 import 'package:loapetition/constants/nav_items.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({Key? key}) : super(key: key);
+  const CustomAppBar({super.key});
 
   @override
   PreferredSizeWidget build(BuildContext context) {
@@ -34,14 +34,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               Navigator.popAndPushNamed(context, '/');
             },
             child: Text('WLOA',
-                style: GoogleFonts.blackHanSans(
-                    fontSize: 20, color: CustomColor.whitePrimaryColor))),
+                style:
+                    GoogleFonts.blackHanSans(fontSize: 20, color: CustomColor.whitePrimaryColor))),
       ],
       backgroundColor: CustomColor.scaffoldColor,
     );
   }
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(50);
 }
