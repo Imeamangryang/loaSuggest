@@ -33,8 +33,7 @@ class _HomePageState extends State<HomePage> {
                         ).createShader(bounds);
                       },
                       blendMode: BlendMode.dstIn,
-                      child: Image.asset(
-                          'images/LOSTARK_wallpaper_3440x1440_Season3.jpg')),
+                      child: Image.asset('images/LOSTARK_wallpaper_3440x1440_Season3.jpg')),
                   Center(
                     child: Wrap(
                       direction: Axis.horizontal,
@@ -46,8 +45,7 @@ class _HomePageState extends State<HomePage> {
                           child: SizedBox(
                             width: (width > 768 ? width / 2 : width),
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 75, horizontal: 20),
+                              padding: const EdgeInsets.symmetric(vertical: 75, horizontal: 20),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -60,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                                     textAlign: TextAlign.center,
                                   ),
                                   Text(
-                                    '로스트아크 건의 및 여론 조사',
+                                    '로스트아크 만족도 조사',
                                     style: GoogleFonts.andika(
                                         fontSize: 12,
                                         fontWeight: FontWeight.w900,
