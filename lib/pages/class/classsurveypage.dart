@@ -2,7 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide Step;
-import 'package:loapetition/constants/nav_items.dart';
+import 'package:loapetition/firestore/database.dart';
 import 'package:loapetition/pages/class/classsurvey.dart';
 import 'package:loapetition/widgets/layout.dart';
 import 'package:survey_kit/survey_kit.dart';
@@ -33,46 +33,62 @@ class _SurveyPageState extends State<SurveyPage> {
                 final Task task = snapshot.data!;
                 return SurveyKit(
                   onResult: (SurveyResult result) {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: const Text('Survey Result'),
-                          content: SingleChildScrollView(
-                            child: ListBody(
-                              children: <Widget>[
-                                Text('Finish Reason: ${result.finishReason}'),
-                                ...result.results.map((stepResult) {
-                                  return Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: stepResult.results.map((questionResult) {
-                                      if (questionResult.result is TextChoice) {
-                                        return Text(
-                                          'Answer: ${questionResult.result.text}',
-                                        );
-                                      } else {
-                                        return Text(
-                                          'Answer: ${questionResult.result}',
-                                        );
-                                      }
-                                    }).toList(),
-                                  );
-                                }),
-                              ],
-                            ),
-                          ),
-                          actions: <Widget>[
-                            TextButton(
-                              child: const Text('OK'),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                                Navigator.pushNamed(context, '/${navItems[0]}');
-                              },
-                            ),
-                          ],
-                        );
-                      },
-                    );
+                    result.toJson();
+                    FirestoreDatabase()
+                        .setData(
+                      collectionPath: 'survey',
+                      documentId: result.id.toString(),
+                      jsonData: result.toJson(),
+                    )
+                        .then((_) {
+                      // Handle successful data saving here
+                      print('Survey result saved successfully!');
+                      Navigator.of(context).pop();
+                    }).catchError((error) {
+                      // Handle error here
+                      print('Error saving survey result: $error');
+                      Navigator.of(context).pop();
+                    });
+                    //   showDialog(
+                    //     context: context,
+                    //     builder: (BuildContext context) {
+                    //       return AlertDialog(
+                    //         title: const Text('Survey Result'),
+                    //         content: SingleChildScrollView(
+                    //           child: ListBody(
+                    //             children: <Widget>[
+                    //               Text('Finish Reason: ${result.finishReason}'),
+                    //               ...result.results.map((stepResult) {
+                    //                 return Column(
+                    //                   crossAxisAlignment: CrossAxisAlignment.start,
+                    //                   children: stepResult.results.map((questionResult) {
+                    //                     if (questionResult.result is TextChoice) {
+                    //                       return Text(
+                    //                         'Answer: ${questionResult.result.text}',
+                    //                       );
+                    //                     } else {
+                    //                       return Text(
+                    //                         'Answer: ${questionResult.result}',
+                    //                       );
+                    //                     }
+                    //                   }).toList(),
+                    //                 );
+                    //               }),
+                    //             ],
+                    //           ),
+                    //         ),
+                    //         actions: <Widget>[
+                    //           TextButton(
+                    //             child: const Text('OK'),
+                    //             onPressed: () {
+                    //               Navigator.of(context).pop();
+                    //               Navigator.of(context).pop();
+                    //             },
+                    //           ),
+                    //         ],
+                    //       );
+                    //     },
+                    //   );
                   },
                   task: task,
                   showProgress: true,

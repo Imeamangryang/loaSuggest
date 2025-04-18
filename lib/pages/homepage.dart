@@ -1,6 +1,8 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:loapetition/widgets/item.dart';
+import 'package:loapetition/constants/NPC_dialog.dart';
+import 'package:loapetition/constants/nav_items.dart';
 import 'package:loapetition/widgets/layout.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,89 +13,148 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int dialogindex = 0;
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return CustomLayout(
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              color: Colors.white,
-              child: Stack(
-                children: [
-                  ShaderMask(
-                      shaderCallback: (bounds) {
-                        return const LinearGradient(
-                          begin: Alignment.center,
-                          end: Alignment.bottomCenter,
-                          colors: [Colors.black, Colors.transparent],
-                          stops: [0.3, 0.8],
-                        ).createShader(bounds);
-                      },
-                      blendMode: BlendMode.dstIn,
-                      child: Image.asset('images/LOSTARK_wallpaper_3440x1440_Season3.jpg')),
-                  Center(
-                    child: Wrap(
-                      direction: Axis.horizontal,
-                      alignment: WrapAlignment.center,
-                      runAlignment: WrapAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: SizedBox(
-                            width: (width > 768 ? width / 2 : width),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 75, horizontal: 20),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Wanted LOA',
-                                    style: GoogleFonts.andika(
-                                        fontSize: 40,
-                                        fontWeight: FontWeight.w900,
-                                        color: Colors.white),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  Text(
-                                    '로스트아크 만족도 조사',
-                                    style: GoogleFonts.andika(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w900,
-                                        color: Colors.grey),
-                                    textAlign: TextAlign.justify,
-                                    softWrap: true,
-                                  ),
-                                ],
-                              ),
-                            ),
+      child: Stack(
+        children: [
+          Positioned.fill(
+            child: Image.asset(
+              'images/Bg_RaidMain.jpg',
+              fit: BoxFit.cover,
+            ),
+          ),
+          Align(
+            alignment: Alignment.topCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 50.0), // Adjust the top padding as needed
+              child: SizedBox(
+                width: (width > 768 ? width / 2 : width),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        '★아말론 스타 평가★',
+                        style: GoogleFonts.nanumBrushScript(
+                            fontSize: 40, fontWeight: FontWeight.w900, color: Colors.black),
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        '유저에, 유저에 의한, 유저를 위한 로스트아크 설문 조사',
+                        style: GoogleFonts.nanumBrushScript(
+                            fontSize: 20, fontWeight: FontWeight.w900, color: Colors.black),
+                        textAlign: TextAlign.justify,
+                        softWrap: true,
+                      ),
+                      const SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/${navItems[0]}');
+                        },
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                          backgroundColor: Colors.lightBlue,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                      ],
-                    ),
+                        child: const Text(
+                          '클래스 평가 페이지',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/${navItems[1]}');
+                        },
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                          backgroundColor: Colors.lightBlue,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        child: const Text(
+                          '콘텐츠 평가 페이지',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
-            Container(
-                color: Colors.white,
-                child: const Center(
-                  child: Wrap(
-                    direction: Axis.horizontal, // 나열 방향
-                    alignment: WrapAlignment.center, // 정렬 방식
-                    spacing: 25, // 좌우 간격
-                    runSpacing: 5, // 상하 간격
-                    children: [ItemCard(), ItemCard(), ItemCard()],
+          ),
+          Positioned(
+            left: -MediaQuery.of(context).size.width * 0.25,
+            top: MediaQuery.of(context).size.height * 0.3,
+            child: Image.asset(
+              'images/NPC2.png',
+              width: MediaQuery.of(context).size.width * 0.7,
+              height: MediaQuery.of(context).size.height * 0.7,
+            ),
+          ),
+          Positioned(
+            bottom: 20,
+            left: 20,
+            right: 20,
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.all(16.0),
+                    decoration: BoxDecoration(
+                      color: Colors.black.withOpacity(0.7),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: DefaultTextStyle(
+                      style: const TextStyle(
+                        fontSize: 24.0,
+                        color: Colors.white,
+                      ),
+                      child: AnimatedTextKit(
+                        isRepeatingAnimation: false,
+                        key: ValueKey<int>(dialogindex),
+                        animatedTexts: [
+                          TyperAnimatedText(NPC_dialog[dialogindex]),
+                        ],
+                        onTap: () {
+                          setState(() {
+                            if (dialogindex < NPC_dialog.length - 1) {
+                              dialogindex++;
+                            } else {
+                              dialogindex = 0; // Reset to the first dialog
+                            }
+                          });
+                        },
+                      ),
+                    ),
                   ),
-                )),
-            Container(
-              color: Colors.white,
-              height: 100,
-            )
-          ],
-        ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.arrow_forward, color: Colors.white),
+                  onPressed: () {
+                    setState(() {
+                      if (dialogindex < NPC_dialog.length - 1) {
+                        dialogindex++;
+                      } else {
+                        dialogindex = 0; // Reset to the first dialog
+                      }
+                    });
+                  },
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

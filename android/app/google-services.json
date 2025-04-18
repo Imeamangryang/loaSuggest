@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "268800801627",
+    "project_id": "wantedloa",
+    "storage_bucket": "wantedloa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:268800801627:android:f5db8db5c1ffe3d405787e",
+        "android_client_info": {
+          "package_name": "com.example.loapetition"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ4x5U5LpokGd7kDBmpoupt3YXYb11abM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

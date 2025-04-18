@@ -46,7 +46,7 @@ class _classmainPageState extends State<classmainPage> {
       }
     } catch (e) {
       setState(() {
-        _data = 'Error: $e';
+        _data = '존재하지 않는 닉네임입니다.';
       });
     }
   }
@@ -106,6 +106,35 @@ class _classmainPageState extends State<classmainPage> {
                                     textAlign: TextAlign.justify,
                                     softWrap: true,
                                   ),
+                                  Container(
+                                    color: Colors.white,
+                                    child: const SizedBox(height: 20),
+                                  ),
+                                  TextField(
+                                    decoration: const InputDecoration(
+                                        border: OutlineInputBorder(),
+                                        labelText: '대표캐릭터명',
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                        hoverColor: Colors.white),
+                                    onChanged: (value) {
+                                      _characterName = value;
+                                    },
+                                    onSubmitted: (value) {
+                                      _characterName = value;
+                                    },
+                                  ),
+                                  const SizedBox(height: 10),
+                                  TextButton(
+                                    style: TextButton.styleFrom(
+                                      backgroundColor: const Color.fromARGB(255, 130, 199, 255),
+                                      foregroundColor: Colors.white,
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 16.0, horizontal: 32.0),
+                                    ),
+                                    onPressed: fetchCharacterInfo,
+                                    child: const Text('정보 불러오기'),
+                                  ),
                                 ],
                               ),
                             ),
@@ -120,38 +149,6 @@ class _classmainPageState extends State<classmainPage> {
             Container(
               color: Colors.white,
               child: const SizedBox(height: 20),
-            ),
-            Container(
-              color: Colors.white,
-              child: Center(
-                child: Container(
-                  color: Colors.white,
-                  width: width > 768 ? width / 2 : width * 0.8,
-                  child: Column(
-                    children: [
-                      TextField(
-                        decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: '대표캐릭터명',
-                            fillColor: Colors.white,
-                            filled: true,
-                            hoverColor: Colors.white),
-                        onChanged: (value) {
-                          _characterName = value;
-                        },
-                        onSubmitted: (value) {
-                          _characterName = value;
-                        },
-                      ),
-                      const SizedBox(height: 10),
-                      TextButton(
-                        onPressed: fetchCharacterInfo,
-                        child: const Text('정보 불러오기'),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
             ),
             Container(
               color: Colors.white,
