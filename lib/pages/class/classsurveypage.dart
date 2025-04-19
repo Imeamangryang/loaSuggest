@@ -1,16 +1,17 @@
 // ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide Step;
 import 'package:loapetition/firestore/database.dart';
+import 'package:loapetition/firestore/datatypes.dart';
 import 'package:loapetition/pages/class/classsurvey.dart';
 import 'package:loapetition/widgets/layout.dart';
 import 'package:survey_kit/survey_kit.dart';
 
 class SurveyPage extends StatefulWidget {
   final String className;
+  final String characterName;
 
-  const SurveyPage({super.key, required this.className});
+  const SurveyPage({super.key, required this.className, required this.characterName});
 
   @override
   _SurveyPageState createState() => _SurveyPageState();
@@ -33,62 +34,27 @@ class _SurveyPageState extends State<SurveyPage> {
                 final Task task = snapshot.data!;
                 return SurveyKit(
                   onResult: (SurveyResult result) {
-                    result.toJson();
+                    CharacterData characterData = CharacterData(
+                      subclass: result.results[1].results[0].result.text,
+                      score: result.results[2].results[0].result,
+                      review: result.results[3].results[0].result.toString(),
+                    );
                     FirestoreDatabase()
                         .setData(
-                      collectionPath: 'survey',
-                      documentId: result.id.toString(),
-                      jsonData: result.toJson(),
+                      collectionPath: widget.className,
+                      documentId: widget.characterName,
+                      jsonData: characterData.toJson(),
                     )
                         .then((_) {
                       // Handle successful data saving here
                       print('Survey result saved successfully!');
+
                       Navigator.of(context).pop();
                     }).catchError((error) {
                       // Handle error here
                       print('Error saving survey result: $error');
                       Navigator.of(context).pop();
                     });
-                    //   showDialog(
-                    //     context: context,
-                    //     builder: (BuildContext context) {
-                    //       return AlertDialog(
-                    //         title: const Text('Survey Result'),
-                    //         content: SingleChildScrollView(
-                    //           child: ListBody(
-                    //             children: <Widget>[
-                    //               Text('Finish Reason: ${result.finishReason}'),
-                    //               ...result.results.map((stepResult) {
-                    //                 return Column(
-                    //                   crossAxisAlignment: CrossAxisAlignment.start,
-                    //                   children: stepResult.results.map((questionResult) {
-                    //                     if (questionResult.result is TextChoice) {
-                    //                       return Text(
-                    //                         'Answer: ${questionResult.result.text}',
-                    //                       );
-                    //                     } else {
-                    //                       return Text(
-                    //                         'Answer: ${questionResult.result}',
-                    //                       );
-                    //                     }
-                    //                   }).toList(),
-                    //                 );
-                    //               }),
-                    //             ],
-                    //           ),
-                    //         ),
-                    //         actions: <Widget>[
-                    //           TextButton(
-                    //             child: const Text('OK'),
-                    //             onPressed: () {
-                    //               Navigator.of(context).pop();
-                    //               Navigator.of(context).pop();
-                    //             },
-                    //           ),
-                    //         ],
-                    //       );
-                    //     },
-                    //   );
                   },
                   task: task,
                   showProgress: true,

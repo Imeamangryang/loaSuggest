@@ -51,18 +51,8 @@ Future<Task> getSampleTask(String className) {
         title: '모험가님의 평가',
         text: '$className에 대한 평가를 자유롭게 적어주세요.',
         isOptional: false,
-        answerFormat: const TextAnswerFormat(maxLines: 5, defaultValue: ""),
-      ),
-      QuestionStep(
-        // 4
-        title: '개선점',
-        text: '스킬 중 가장 개선이 필요하다고 생각되는 스킬을 하나 골라주세요.',
-        isOptional: false,
-        answerFormat: SingleChoiceAnswerFormat(
-          textChoices: skillList[className]!
-              .map((subclass) => TextChoice(text: subclass, value: subclass))
-              .toList(),
-        ),
+        answerFormat:
+            const TextAnswerFormat(maxLines: 5, defaultValue: "", validationRegEx: '^(?!\s*\$).+'),
       ),
       CompletionStep(
         stepIdentifier: StepIdentifier(id: '321'),

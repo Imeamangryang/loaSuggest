@@ -37,7 +37,7 @@ class _classmainPageState extends State<classmainPage> {
         final data = jsonDecode(response.body) as List<dynamic>; // Cast to List<dynamic>
         setState(() {
           _characters = data.cast<Map<String, dynamic>>(); // Convert to List<Map<String, dynamic>>
-          _data = 'response: ${response.body}';
+          _data = '존재하지 않는 닉네임입니다.';
         });
       } else {
         setState(() {
@@ -73,7 +73,10 @@ class _classmainPageState extends State<classmainPage> {
                         ).createShader(bounds);
                       },
                       blendMode: BlendMode.dstIn,
-                      child: Image.asset('images/LOSTARK_wallpaper_3440x1440_Season3.jpg')),
+                      child: Image.asset(
+                        'images/LOSTARK_wallpaper_3440x1440_Season3.jpg',
+                        filterQuality: FilterQuality.high,
+                      )),
                   Center(
                     child: Wrap(
                       direction: Axis.horizontal,
@@ -148,10 +151,6 @@ class _classmainPageState extends State<classmainPage> {
             ),
             Container(
               color: Colors.white,
-              child: const SizedBox(height: 20),
-            ),
-            Container(
-              color: Colors.white,
               child: _characters.isEmpty
                   ? Text(_data)
                   : ListView.builder(
@@ -192,6 +191,7 @@ class _classmainPageState extends State<classmainPage> {
                                         MaterialPageRoute(
                                           builder: (context) => SurveyPage(
                                             className: character['CharacterClassName'].toString(),
+                                            characterName: character['CharacterName'].toString(),
                                           ),
                                           settings: RouteSettings(
                                             name: '/${character['CharacterClassName']}',
@@ -211,6 +211,10 @@ class _classmainPageState extends State<classmainPage> {
                         }
                       },
                     ),
+            ),
+            Container(
+              color: Colors.white,
+              child: const SizedBox(height: 100),
             ),
           ],
         ),

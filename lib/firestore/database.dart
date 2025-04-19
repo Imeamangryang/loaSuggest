@@ -10,9 +10,25 @@ class FirestoreDatabase {
     required Map<String, dynamic> jsonData,
   }) async {
     try {
-      await _firestore.collection(collectionPath).doc(documentId).set(jsonData);
+      await _firestore
+          .collection(collectionPath)
+          .doc(documentId)
+          .set(jsonData, SetOptions(merge: true));
     } catch (e) {
       print('Error setting data: $e');
+    }
+  }
+
+  // Update specific fields in a document with JSON data
+  Future<void> updateData({
+    required String collectionPath,
+    required String documentId,
+    required Map<String, dynamic> jsonData,
+  }) async {
+    try {
+      await _firestore.collection(collectionPath).doc(documentId).update(jsonData);
+    } catch (e) {
+      print('Error updating data: $e');
     }
   }
 
